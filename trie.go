@@ -124,17 +124,15 @@ func SearchByMatrix(matrix [][]int, word string) bool {
 	row := matrix[1]
 	var i int
 	for ; i < len(word); i++ {
-		eof := row[len(row)-1]
-		if eof != 0 {
-			return i == len(word)-1
-		}
 		col := int(word[i] - 'a')
 		if col >= len(matrix[1])-1 {
 			return false
 		}
 		row = matrix[row[col]]
 	}
-	return true
+	// 最后遍历到的一行可以直接到终结节点，才算匹配
+	eof := row[len(row)-1]
+	return eof != 0
 }
 
 func newMatrix() [][]int {

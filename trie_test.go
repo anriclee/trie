@@ -1,8 +1,9 @@
 package trie
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestTransitionArray(t *testing.T) {
@@ -23,7 +24,17 @@ func TestTransitionArray(t *testing.T) {
 	//fmt.Println(trie.Search("bee") == true)
 	//fmt.Println(trie.Search("bef") == false)
 
-	fmt.Println(SearchByMatrix(matrix, "ace") == true)
-	fmt.Println(SearchByMatrix(matrix, "bee") == true)
-	fmt.Println(SearchByMatrix(matrix, "bef") == false)
+	require.True(t, SearchByMatrix(matrix, "ace"))
+	require.True(t, SearchByMatrix(matrix, "add"))
+	require.True(t, SearchByMatrix(matrix, "bad"))
+	require.True(t, SearchByMatrix(matrix, "bed"))
+	require.True(t, SearchByMatrix(matrix, "bee"))
+	require.True(t, SearchByMatrix(matrix, "cab"))
+	require.True(t, SearchByMatrix(matrix, "dad"))
+
+	require.False(t, SearchByMatrix(matrix, "ac"))
+	require.False(t, SearchByMatrix(matrix, "ad"))
+	require.False(t, SearchByMatrix(matrix, "ba"))
+	require.False(t, SearchByMatrix(matrix, "bef"))
+	require.False(t, SearchByMatrix(matrix, "beee"))
 }
